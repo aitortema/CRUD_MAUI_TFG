@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	x:Class="AppTFG.Views.VistaAdmin"
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	Title="VistaAdmin">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+
+		<Label
+			Grid.Row="0"
+			Margin="10"
+			HorizontalOptions="Center"
+			Text="Panel de administrador"
+			VerticalOptions="Center" />
+
+		<CollectionView
+			x:Name="dataCollectionView"
+			Grid.Row="1"
+			Margin="20"
+			SelectionChanged="OnUserSelected"
+			SelectionMode="Single">
+			<CollectionView.ItemTemplate>
+				<DataTemplate>
+					<StackLayout
+						Padding="10"
+						BackgroundColor="Transparent"
+						Orientation="Horizontal">
+						<Label
+							FontSize="16"
+							HorizontalOptions="StartAndExpand"
+							Text="{Binding Username}" />
+						<Label
+							FontSize="16"
+							HorizontalOptions="EndAndExpand"
+							Text="{Binding Password}" />
+					</StackLayout>
+				</DataTemplate>
+			</CollectionView.ItemTemplate>
+		</CollectionView>
+
+		<!--  MENÚ CREAR USUARIO  -->
+		<Grid x:Name="CreateUserGrid" IsVisible="False">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+			<Label
+				Grid.Row="0"
+				HorizontalOptions="Center"
+				Text="Crear nuevo usuario" />
+			<Entry
+				x:Name="NewUsernameEntry"
+				Grid.Row="1"
+				Placeholder="Nombre de usuario" />
+			<Entry
+				x:Name="NewPasswordEntry"
+				Grid.Row="2"
+				Placeholder="Contraseña" />
+			<StackLayout
+				Grid.Row="3"
+				HorizontalOptions="Center"
+				Orientation="Horizontal">
+				<Button Clicked="SaveNewUser" Text="Crear" />
+				<Button Clicked="CancelCreateUser" Text="Cancelar" />
+			</StackLayout>
+		</Grid>
+
+		<!--  MENÚ MODIFICAR USUARIO  -->
+		<Grid
+			x:Name="UpdateUserGrid"
+			BackgroundColor="#AA000000"
+			IsVisible="False">
+			<Grid
+				Margin="20"
+				Padding="20"
+				BackgroundColor="Black"
+				HorizontalOptions="Center"
+				VerticalOptions="Center">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+				<Label
+					Grid.Row="0"
+					Margin="0,0,0,10"
+					FontAttributes="Bold"
+					FontSize="18"
+					HorizontalOptions="Center"
+					Text="Modificar usuario" />
+				<Entry
+					x:Name="UsernameEntry"
+					Grid.Row="1"
+					Margin="0,0,0,10"
+					Placeholder="Nombre de usuario" />
+				<Entry
+					x:Name="PasswordEntry"
+					Grid.Row="2"
+					Margin="0,0,0,10"
+					Placeholder="Contraseña" />
+				<StackLayout
+					Grid.Row="3"
+					HorizontalOptions="Center"
+					Orientation="Horizontal"
+					Spacing="10">
+					<Button Clicked="GuardarUpdatedUser" Text="Guardar" />
+					<Button Clicked="CancelUpdateUser" Text="Cancelar" />
+				</StackLayout>
+			</Grid>
+		</Grid>
+
+		<StackLayout
+			Grid.Row="1"
+			Margin="0,0,0,20"
+			HorizontalOptions="CenterAndExpand"
+			Orientation="Horizontal"
+			VerticalOptions="End">
+			<Button
+				x:Name="createButton"
+				Clicked="ClickAgregar"
+				Text="Crear" />
+			<Button
+				x:Name="updateButton"
+				Clicked="ClickUpdate"
+				Text="Actualizar" />
+			<Button
+				x:Name="deleteButton"
+				Clicked="ClickBorrar"
+				Text="Eliminar" />
+		</StackLayout>
+	</Grid>
+</ContentPage>

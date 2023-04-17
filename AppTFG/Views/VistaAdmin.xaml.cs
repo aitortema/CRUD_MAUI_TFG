@@ -1,0 +1,135 @@
+using AppTFG.Data;
+using AppTFG.Modelo;
+using System.Collections.ObjectModel;
+
+namespace AppTFG.Views
+{
+    public partial class VistaAdmin : ContentPage
+    {
+        private UserRepository _userRepository;
+        private ObservableCollection<User> _users;
+
+        public VistaAdmin()
+        {
+            InitializeComponent();
+            _userRepository = new UserRepository();
+            LoadData();
+        }
+
+        private void LoadData()
+        {
+            _users = new ObservableCollection<User>(_userRepository.GetAllUsers());
+            dataCollectionView.ItemsSource = _users;
+        }
+
+        private void ClickAgregar(object sender, EventArgs e)
+        {
+            CreateUserGrid.IsVisible = true;
+        }
+
+        private void ClickUpdate(object sender, EventArgs e)
+        {
+            var userToUpdate = (User)dataCollectionView.SelectedItem;
+
+            if (userToUpdate != null)
+            {
+                UsernameEntry.Text = userToUpdate.Username;
+                PasswordEntry.Text = userToUpdate.Password;
+                UpdateUserGrid.IsVisible = true;
+            }
+        }
+
+        private async void ClickBorrar(object sender, EventArgs e)
+        {
+            var userToDelete = (User)dataCollectionView.SelectedItem;
+
+            if (userToDelete != null)
+            {
+                bool confirm = await DisplayAlert("Eliminar usuario", $"¿Estás seguro de que deseas eliminar a {userToDelete.Username}?", "Sí", "No");
+                if (confirm)
+                {
+                    _userRepository.BorrarUsuario(userToDelete.Id);
+                    LoadData();
+
+                    // Establece el elemento seleccionado en null para evitar errores
+                    dataCollectionView.SelectedItem = null;
+                }
+            }
+        }
+
+        private void OnUserSelected(object sender, SelectionChangedEventArgs e)
+        {
+            var user = (User)e.CurrentSelection.FirstOrDefault();
+            if (user != null)
+            {
+               // UpdateUserGrid.BackgroundColor = Color.FromHex("#0000FF");
+                UpdateUserGrid.BackgroundColor = Color.FromHex("#2736e3");
+
+            }
+        }
+
+        private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var user = (User)e.CurrentSelection.FirstOrDefault();
+            if (user != null)
+            {
+                UpdateUserGrid.IsVisible = true;
+                UsernameEntry.Text = user.Username;
+                PasswordEntry.Text = user.Password;
+            }
+        }
+
+        private void SaveNewUser(object sender, EventArgs e)
+        {
+            // Comprueba que los campos no estén vacíos
+            if (!string.IsNullOrWhiteSpace(NewUsernameEntry.Text) && !string.IsNullOrWhiteSpace(NewPasswordEntry.Text))
+            {
+                var newUser = new User
+                {
+                    Username = NewUsernameEntry.Text,
+                    Password = NewPasswordEntry.Text
+                };
+                _userRepository.AgregarUsuario(newUser);
+
+                LoadData();
+
+                // Limpiar campos
+                NewUsernameEntry.Text = "";
+                NewPasswordEntry.Text = "";
+
+                // Ocultar CreateUserGrid
+                CreateUserGrid.IsVisible = false;
+            }
+        }
+
+        private void CancelCreateUser(object sender, EventArgs e)
+        {
+            // Limpiar
+            NewUsernameEntry.Text = "";
+            NewPasswordEntry.Text = "";
+
+            // Ocultar
+            CreateUserGrid.IsVisible = false;
+        }
+
+        private void GuardarUpdatedUser(object sender, EventArgs e)
+        {
+            var userToUpdate = (User)dataCollectionView.SelectedItem;
+
+            if (userToUpdate != null)
+            {
+                userToUpdate.Username = UsernameEntry.Text;
+                userToUpdate.Password = PasswordEntry.Text;
+                _userRepository.UpdateUsuario(userToUpdate);
+                LoadData();
+            }
+
+            UpdateUserGrid.IsVisible = false;
+        }
+
+        private void CancelUpdateUser(object sender, EventArgs e)
+        {
+            UpdateUserGrid.IsVisible = false;
+        }
+    }
+}

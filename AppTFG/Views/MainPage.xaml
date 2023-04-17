@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	x:Class="AppTFG.MainPage"
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+	<Grid>
+		<Image
+			Margin="0,5,0,0"
+			Aspect="Center"
+			Source="https://www.wallpaperflare.com/static/526/367/582/highlights-circles-blurred-circles-wallpaper.jpg" />
+		<ScrollView>
+			<VerticalStackLayout Spacing="10" VerticalOptions="Center">
+				<Image
+					Margin="5"
+					Aspect="Center"
+					Source="logotopsecret.png" />
+				<HorizontalStackLayout HorizontalOptions="Center">
+					<Label
+						Margin="0,0,50,0"
+						FontSize="12"
+						HorizontalOptions="Center"
+						Text="Usuario:"
+						VerticalTextAlignment="Center" />
+					<Entry
+						x:Name="usernameEntry"
+						FontSize="12"
+						HorizontalOptions="Center"
+						Keyboard="Text"
+						Placeholder="Introduce usuario"
+						PlaceholderColor="DarkGray" />
+				</HorizontalStackLayout>
+
+				<HorizontalStackLayout HorizontalOptions="Center">
+					<Label
+						Margin="0,0,26,0"
+						FontSize="12"
+						HorizontalOptions="Center"
+						Text="Contraseña:"
+						VerticalTextAlignment="Center" />
+					<Entry
+						x:Name="passwordEntry"
+						FontSize="12"
+						HorizontalOptions="Center"
+						IsPassword="True"
+						Keyboard="Text"
+						Placeholder="Introduce contraseña"
+						PlaceholderColor="DarkGray" />
+				</HorizontalStackLayout>
+
+				<Button
+					x:Name="loginButton"
+					Margin="15"
+					BackgroundColor="DarkCyan"
+					Clicked="LoginButton_Clicked"
+					HorizontalOptions="FillAndExpand"
+					Text="Iniciar sesión"
+					TextColor="AliceBlue"
+					WidthRequest="150" />
+
+				<Button
+					x:Name="registerButton"
+					BackgroundColor="DarkCyan"
+					Clicked="RegisterButton_Clicked"
+					HorizontalOptions="FillAndExpand"
+					Text="Registrarse"
+					TextColor="AliceBlue"
+					WidthRequest="150" />
+
+			</VerticalStackLayout>
+		</ScrollView>
+	</Grid>
+</ContentPage>

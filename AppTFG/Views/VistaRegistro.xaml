@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+	x:Class="AppTFG.VistaRegistro"
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:local="clr-namespace:AppTFG"
+	Title="Registro">
+	<StackLayout Padding="20" BackgroundColor="CadetBlue">
+		<Label
+			Margin="0,0,0,20"
+			FontSize="Large"
+			HorizontalOptions="Center"
+			Text="Regístrate aquí" />
+		<Entry
+			x:Name="UsernameEntry"
+			HorizontalOptions="Center"
+			Placeholder="Usuario"
+			PlaceholderColor="Black" />
+		<Entry
+			x:Name="PasswordEntry"
+			HorizontalOptions="Center"
+			IsPassword="True"
+			Placeholder="Contraseña"
+			PlaceholderColor="Black" />
+		<Button
+			Margin="0,20,0,0"
+			BackgroundColor="Cornsilk"
+			Clicked="OnRegisterClicked"
+			HorizontalOptions="Center"
+			Text="Registrar"
+			TextColor="Black" />
+	</StackLayout>
+</ContentPage>

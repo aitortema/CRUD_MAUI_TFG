@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	x:Class="AppTFG.Views.VistaCifrarTXT"
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	Title="Cifrar mensajes">
+	<VerticalStackLayout>
+
+		<Label
+			Margin="15,15,0,0"
+			FontSize="18"
+			HorizontalOptions="Start"
+			Text="1. Escribe tu mensaje:" />
+		<Entry
+			x:Name="mensajeAcifrar"
+			Margin="0,0,0,15"
+			HorizontalOptions="Center"
+			Placeholder="Mensaje a cifrar" />
+		<Picker
+			x:Name="picker"
+			Title="2. Elige el método de cifrado"
+			Margin="15,15,0,0"
+			FontSize="18"
+			HorizontalOptions="Start"
+			TextColor="White">
+			<Picker.Items>
+				<x:String>Morse</x:String>
+				<x:String>Base64</x:String>
+				<x:String>Binario</x:String>
+				<x:String>Cesar</x:String>
+				<x:String>Vigenere</x:String>
+			</Picker.Items>
+		</Picker>
+
+		<Entry
+			x:Name="cifradoEscogido"
+			Keyboard="Numeric"
+			Placeholder="Introduce un número del 1 al 25"
+			TextChanged="CifradoEscogido_TextChanged" />
+		<Label
+			Margin="15,15,0,0"
+			FontSize="18"
+			HorizontalOptions="Start"
+			Text="3. Resultado: " />
+		<Editor
+			x:Name="txtResEditor"
+			Margin="15,0,0,0"
+			HorizontalOptions="StartAndExpand" />
+
+		<ImageButton
+			Margin="0,15,0,0"
+			BackgroundColor="Yellow"
+			Clicked="Enviar_Clicked"
+			HeightRequest="100"
+			HorizontalOptions="Center"
+			Source="logowhatsapp.png"
+			WidthRequest="100" />
+
+	</VerticalStackLayout>
+</ContentPage>

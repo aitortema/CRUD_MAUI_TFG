@@ -1,71 +1,123 @@
-namespace AppTFG.Views;
-
 using AppTFG.Modelo;
 using Microsoft.Maui.Controls;
 
-
-public partial class VistaCifrarTXT : ContentPage
+namespace AppTFG.Views
 {
-    public int CifradoEscogido { get; set; }
-
-    public VistaCifrarTXT()
+    public partial class VistaCifrarTXT : ContentPage
     {
-        InitializeComponent();
-    }
+        public int CifradoEscogido { get; set; }
 
-    private void CifradoEscogido_TextChanged(object sender, TextChangedEventArgs e)
-    {
-        if (int.TryParse(e.NewTextValue, out int valorCifrador) && valorCifrador >= 1 && valorCifrador <= 25)
+        public VistaCifrarTXT()
         {
-            CifradoEscogido = valorCifrador;
+            InitializeComponent();
         }
-        else
+
+        private void CifradoEscogido_TextChanged(object sender, TextChangedEventArgs e)
         {
-            CifradoEscogido = 0;
+            if (int.TryParse(e.NewTextValue, out int valorCifrador) && valorCifrador >= 1 && valorCifrador <= 25)
+            {
+                CifradoEscogido = valorCifrador;
+            }
+            else
+            {
+                CifradoEscogido = 0;
+            }
         }
-    }
 
-
-    private void Enviar_Clicked(object sender, EventArgs e)
-    {
-        // ================================== CIFRAR TEXTO
-        string mensaje = mensajeAcifrar.Text;
-        int cifradoEscogido = CifradoEscogido;
-
-        switch (picker.SelectedItem.ToString())
+        private void PickerCifrado(object sender, EventArgs e)
         {
-            case "Morse":
-                string mensajeCifradoMorse = CifradorTXT.CifrarMorse(mensaje);
-                Clipboard.SetTextAsync(mensajeCifradoMorse);
-                DisplayAlert("Cifrado", "Mensaje en MORSE copiado al portapapeles", "Guay");
-                txtResEditor.Text = mensajeCifradoMorse;
-                break;
-            case "Base64":
-                string mensajeCifradoBase64 = CifradorTXT.CifrarBase64(mensaje);
-                Clipboard.SetTextAsync(mensajeCifradoBase64);
-                DisplayAlert("Cifrado", "Mensaje en BASE64 copiado al portapapeles", "Guay");
-                txtResEditor.Text = mensajeCifradoBase64;
-                break;
-            case "Binario":
-                string mensajeCifradoBinario = CifradorTXT.CifrarBinario(mensaje);
-                Clipboard.SetTextAsync(mensajeCifradoBinario);
-                DisplayAlert("Cifrado", "Mensaje en BINARIO copiado al portapapeles", "Guay");
-                txtResEditor.Text = mensajeCifradoBinario;
-                break;
-            case "Cesar":
-                string mensajeCifradoCesar = CifradorTXT.CifrarCesar(mensaje, cifradoEscogido);
-                Clipboard.SetTextAsync(mensajeCifradoCesar);
-                DisplayAlert("Cifrado", "Mensaje en CESAR copiado al portapapeles", "Guay");
-                txtResEditor.Text = mensajeCifradoCesar;
-                break;
-            case "Vigenere":
-                string mensajeCifradoVigenere = CifradorTXT.CifrarVigenere(mensaje);
-                Clipboard.SetTextAsync(mensajeCifradoVigenere);
-                DisplayAlert("Cifrado", "Mensaje en VIGENERE copiado al portapapeles", "Guay");
-                txtResEditor.Text = mensajeCifradoVigenere;
-                break;
-            default:
-                break;
+            if (picker.SelectedItem != null && picker.SelectedItem.ToString() == "Cesar" || picker.SelectedItem.ToString() == "Vigenere")
+            {
+                cifradoEscogido.IsVisible = true;
+            }
+            else
+            {
+                cifradoEscogido.IsVisible = false;
+            }
         }
+
+        private void PickerDescifrado(object sender, EventArgs e)
+        {
+            if (pickerDescifrar.SelectedItem != null && pickerDescifrar.SelectedItem.ToString() == "Cesar" || picker.SelectedItem.ToString() == "Vigenere")
+            {
+                cifradoEscogido.IsVisible = true;
+            }
+            else
+            {
+                cifradoEscogido.IsVisible = false;
+            }
+        }
+
+        private void Enviar_Clicked(object sender, EventArgs e)
+        {
+            var mensajeCifrado = txtResEditorCifrado.Text;
+            Clipboard.SetTextAsync(mensajeCifrado);
+
+            DisplayAlert("Éxito 😀", $"Mensaje copiado al portapapeles: {mensajeCifrado}" + mensajeCifrado, "OK");
+        }
+
+        private void Cifrar_Clicked(object sender, EventArgs e)
+        {
+            string mensaje = mensajeAcifrar.Text;
+            string cifrado = "";
+            string clave = cifradoEscogido.Text;
+
+            switch (picker.SelectedItem.ToString())
+            {
+                case "Morse":
+                    cifrado = CifradorTXT.CifrarMorse(mensaje);
+                    break;
+                case "Base64":
+                    cifrado = CifradorTXT.CifrarBase64(mensaje);
+                    break;
+                case "Binario":
+                    cifrado = CifradorTXT.CifrarBinario(mensaje);
+                    break;
+                case "Cesar":
+                    cifrado = CifradorTXT.CifrarCesar(mensaje, CifradoEscogido);
+                    break;
+                case "Vigenere":
+                    cifrado = CifradorTXT.CifrarVigenere(mensaje, clave);
+                    break;
+                default:
+                    break;
+            }
+
+            txtResEditorCifrado.Text = cifrado;
+            Clipboard.SetTextAsync(cifrado);
+            DisplayAlert("Éxito 😀", $"Mensaje copiado al portapapeles: {cifrado}", "OK");
+        }
+
+        private void Descifrar_Clicked(object sender, EventArgs e)
+        {
+            string mensaje = mensajeAdescifrar.Text;
+            string descifrado = "";
+
+            switch (pickerDescifrar.SelectedItem.ToString())
+            {
+                case "Morse":
+                    descifrado = DescifradorTXT.DescifrarMorse(mensaje);
+                    break;
+                case "Base64":
+                    descifrado = DescifradorTXT.DescifrarBase64(mensaje);
+                    break;
+                case "Binario":
+                    descifrado = DescifradorTXT.DescifrarBinario(mensaje);
+                    break;
+                case "Cesar":
+                    descifrado = DescifradorTXT.DescifrarCesar(mensaje, CifradoEscogido);
+                    break;
+                case "Vigenere":
+                    descifrado = DescifradorTXT.DescifrarVigenere(mensaje, "CLAVE");
+                    break;
+                default:
+                    break;
+            }
+
+            txtResEditorDescifrado.Text = descifrado;
+            Clipboard.SetTextAsync(descifrado);
+            DisplayAlert("Éxito 😀", $"Mensaje copiado al portapapeles: {descifrado}", "OK");
+        }
+
     }
 }

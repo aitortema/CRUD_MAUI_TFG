@@ -2,8 +2,16 @@
 <ContentPage
 	x:Class="AppTFG.MainPage"
 	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
-
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	Title="Top Secret">
+	<Shell.TitleView>
+		<Grid>
+			<Label
+				HorizontalOptions="Center"
+				Text="Top Secret"
+				VerticalOptions="Center" />
+		</Grid>
+	</Shell.TitleView>
 	<Grid>
 		<Image
 			Margin="0,5,0,0"
@@ -66,6 +74,9 @@
 					Text="Registrarse"
 					TextColor="AliceBlue"
 					WidthRequest="150" />
+
+				<!--  Exit app button  -->
+				<Button x:Name="btnExit" />
 
 			</VerticalStackLayout>
 		</ScrollView>

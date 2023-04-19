@@ -54,7 +54,7 @@ namespace AppTFG.Modelo
             int indiceASCII;
 
             foreach (char letraMensaje in mensaje)
-            {
+            { // Total letras y números = 59
                 if (letraMensaje >= 48 && letraMensaje <= 57) // Números (caracteres ASCII 48-57)
                 {
                     indiceASCII = letraMensaje - 48;
@@ -86,21 +86,36 @@ namespace AppTFG.Modelo
         }
 
         // Vigenere
-
-        public static string CifrarVigenere(string mensaje)
+        public static string CifrarVigenere(string mensaje, string clave)
         {
             string mensajeCifrado = "";
-            int j = 0;
-            for (int i = 0; i < mensaje.Length; i++)
+            int claveIndice = 0;
+            int claveLength = clave.Length;
+
+            foreach (char letraMensaje in mensaje)
             {
-                if (j == mensaje.Length)
+                if (letraMensaje >= 65 && letraMensaje <= 90) // Mayúsculas (caracteres ASCII 65-90)
                 {
-                    j = 0;
+                    char letraClave = clave[claveIndice % claveLength].ToString().ToUpper()[0];
+                    int indiceCifrado = (letraMensaje + letraClave) % 26;
+                    mensajeCifrado += (char)(indiceCifrado + 65);
+                    claveIndice++;
                 }
-                mensajeCifrado += (char)(mensaje[i] + mensaje[j]);
-                j++;
+                else if (letraMensaje >= 97 && letraMensaje <= 122) // Minúsculas (caracteres ASCII 97-122)
+                {
+                    char letraClave = clave[claveIndice % claveLength].ToString().ToLower()[0];
+                    int indiceCifrado = (letraMensaje + letraClave) % 26;
+                    mensajeCifrado += (char)(indiceCifrado + 97);
+                    claveIndice++;
+                }
+                else
+                {
+                    mensajeCifrado += letraMensaje;
+                }
             }
+
             return mensajeCifrado;
         }
+
     }
 }

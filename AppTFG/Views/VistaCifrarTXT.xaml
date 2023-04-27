@@ -4,7 +4,7 @@
 	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	Title="Cifrar mensajes">
-	<ScrollView>
+	<ScrollView VerticalOptions="Center">
 		<Grid HorizontalOptions="Center">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="*" />
@@ -19,7 +19,23 @@
 				<RowDefinition Height="Auto" />
 				<RowDefinition Height="Auto" />
 			</Grid.RowDefinitions>
+			<!--  FONDO CIFRAR MENSAJE  -->
+			<BoxView
+				Grid.Row="0"
+				Grid.RowSpan="7"
+				Grid.Column="0"
+				Margin="2"
+				Opacity="0.5"
+				Color="LightBlue" />
 
+			<!--  FONDO DESCIFRAR MENSAJE  -->
+			<BoxView
+				Grid.Row="0"
+				Grid.RowSpan="7"
+				Grid.Column="1"
+				Margin="2"
+				Opacity="0.5"
+				Color="LightGreen" />
 			<!--  SECCIÓN CIFRAR MENSAJE  -->
 			<Label
 				Grid.Row="0"
@@ -35,7 +51,7 @@
 				Placeholder="Mensaje a cifrar" />
 			<Picker
 				x:Name="picker"
-				Title="2. Elige el método de cifrado"
+				Title="2. Método de cifrado"
 				Grid.Row="2"
 				Grid.Column="0"
 				Margin="10,0,0,0"
@@ -50,14 +66,6 @@
 					<x:String>Vigenere</x:String>
 				</Picker.Items>
 			</Picker>
-			<Entry
-				x:Name="cifradoEscogido"
-				Grid.Row="3"
-				Grid.Column="0"
-				IsVisible="false"
-				Keyboard="Numeric"
-				Placeholder="Escribe clave o rotación"
-				TextChanged="CifradoEscogido_TextChanged" />
 			<Label
 				Grid.Row="4"
 				Grid.Column="0"
@@ -70,7 +78,6 @@
 				Grid.Column="0"
 				Margin="10,0,0,0"
 				HeightRequest="75" />
-
 			<!--  SECCIÓN DESCIFRAR MENSAJE  -->
 			<Label
 				Grid.Row="0"
@@ -86,7 +93,7 @@
 				Placeholder="Mensaje a descifrar" />
 			<Picker
 				x:Name="pickerDescifrar"
-				Title="2. Elige el método de descifrado"
+				Title="2. Método de descifrado"
 				Grid.Row="2"
 				Grid.Column="1"
 				Margin="10,0,0,0"
@@ -101,6 +108,15 @@
 					<x:String>Vigenere</x:String>
 				</Picker.Items>
 			</Picker>
+			<Entry
+				x:Name="cifradoEscogido"
+				Grid.Row="3"
+				Grid.ColumnSpan="2"
+				HorizontalOptions="Center"
+				IsVisible="false"
+				Keyboard="Numeric"
+				Placeholder="Escribe clave o rotación"
+				TextChanged="CifradoEscogido_TextChanged" />
 			<Label
 				Grid.Row="4"
 				Grid.Column="1"
@@ -113,27 +129,24 @@
 				Grid.Column="1"
 				Margin="10,0,0,0"
 				HeightRequest="75" />
-
 			<!--  Botón de envío para CIFRAR  -->
 			<ImageButton
 				Grid.Row="6"
 				Grid.Column="0"
-				Margin="0,10,0,0"
-				BackgroundColor="Yellow"
+				Margin="0,10,0,10"
 				Clicked="Cifrar_Clicked"
 				HorizontalOptions="Center"
-				Source="logowhatsapp.png"
+				Source="candadoC.png"
 				WidthRequest="50" />
 
 			<!--  Botón de envío para DESCIFRAR  -->
 			<ImageButton
 				Grid.Row="6"
 				Grid.Column="1"
-				Margin="0,10,0,0"
-				BackgroundColor="Yellow"
+				Margin="0,10,0,10"
 				Clicked="Descifrar_Clicked"
 				HorizontalOptions="Center"
-				Source="logowhatsapp.png"
+				Source="candadoA.png"
 				WidthRequest="50" />
 
 		</Grid>

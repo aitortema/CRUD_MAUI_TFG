@@ -3,9 +3,10 @@
 	x:Class="AppTFG.VistaRegistro"
 	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:controls="http://schemas.microsoft.com/dotnet/2021/maui/controls"
 	xmlns:local="clr-namespace:AppTFG"
 	Title="Registro">
-	<StackLayout Padding="20" BackgroundColor="CadetBlue">
+	<StackLayout Padding="20" BackgroundColor="LightCoral">
 		<Label
 			Margin="0,0,0,20"
 			FontSize="Large"
@@ -22,11 +23,31 @@
 			IsPassword="True"
 			Placeholder="Contraseña"
 			PlaceholderColor="Black" />
+		<Grid Margin="15" HorizontalOptions="Center">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+			<CheckBox x:Name="TermsCheckBox" Grid.Column="0" />
+			<Button
+				x:Name="TermsButton"
+				Grid.Column="1"
+				Padding="0"
+				BackgroundColor="Transparent"
+				BorderWidth="0"
+				Clicked="OnTermsButtonClicked"
+				FontSize="12"
+				HorizontalOptions="Start"
+				Text="Aceptar términos de uso."
+				TextColor="DarkSlateGray" />
+
+		</Grid>
 		<Button
-			Margin="0,20,0,0"
+			x:Name="btnRegistrar"
 			BackgroundColor="Cornsilk"
 			Clicked="OnRegisterClicked"
 			HorizontalOptions="Center"
+			IsEnabled="{Binding Source={x:Reference TermsCheckBox}, Path=IsChecked}"
 			Text="Registrar"
 			TextColor="Black" />
 	</StackLayout>

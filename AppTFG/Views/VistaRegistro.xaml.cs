@@ -1,4 +1,5 @@
 using SQLite;
+using Microsoft.Maui.Controls;
 
 namespace AppTFG
 {
@@ -35,5 +36,11 @@ namespace AppTFG
                 Navigation.PushAsync(new MainPage());
             }
         }
+
+        private async void OnTermsButtonClicked(object sender, EventArgs e)
+        {
+            await Launcher.OpenAsync(new Uri("https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/label?view=net-maui-7.0"));
+        }
+
     }
 }

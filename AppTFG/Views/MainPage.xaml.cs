@@ -39,5 +39,10 @@ namespace AppTFG
         {
             await Navigation.PushAsync(new VistaRegistro());
         }
+
+        private void btnSalir_Clicked(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.GetCurrentProcess().CloseMainWindow();
+        }
     }
 }

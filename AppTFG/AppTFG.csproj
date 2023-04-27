@@ -49,7 +49,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\Images\lagarto.jpg" />
+	  <AndroidResource Remove="ViewModel\**" />
+	  <Compile Remove="ViewModel\**" />
+	  <EmbeddedResource Remove="ViewModel\**" />
+	  <MauiCss Remove="ViewModel\**" />
+	  <MauiXaml Remove="ViewModel\**" />
+	  <None Remove="ViewModel\**" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -59,10 +64,6 @@
 		<PackageReference Include="SQLitePCLRaw.core" Version="2.1.4" />
 		<PackageReference Include="SQLitePCLRaw.lib.e_sqlite3" Version="2.1.4" />
 		<PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.4" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="ViewModel\" />
 	</ItemGroup>
 
 	<ItemGroup>

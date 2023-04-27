@@ -14,8 +14,6 @@ public partial class VistaMenu : ContentPage
 
 	private void BtnVistaCifrarTXT(object sender, EventArgs e)
 	{
-        // Agrega la lógica necesaria para verificar las credenciales del usuario aquí
-        // Si las credenciales son correctas, puedes abrir la siguiente página
         Navigation.PushAsync(new VistaCifrarTXT());
     }
 

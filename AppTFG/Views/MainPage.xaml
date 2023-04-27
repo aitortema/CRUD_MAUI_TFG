@@ -20,12 +20,11 @@
 		<ScrollView>
 			<VerticalStackLayout Spacing="10" VerticalOptions="Center">
 				<Image
-					Margin="5"
 					Aspect="Center"
 					Source="logotopsecret.png" />
 				<HorizontalStackLayout HorizontalOptions="Center">
 					<Label
-						Margin="0,0,50,0"
+						Margin="0,0,30,0"
 						FontSize="12"
 						HorizontalOptions="Center"
 						Text="Usuario:"
@@ -58,7 +57,6 @@
 
 				<Button
 					x:Name="loginButton"
-					Margin="15"
 					BackgroundColor="DarkCyan"
 					Clicked="LoginButton_Clicked"
 					HorizontalOptions="FillAndExpand"
@@ -76,7 +74,14 @@
 					WidthRequest="150" />
 
 				<!--  Exit app button  -->
-				<Button x:Name="btnExit" />
+				<Button
+					x:Name="btnSalir"
+					Clicked="btnSalir_Clicked"
+					BackgroundColor="DarkRed"
+					HorizontalOptions="Center"
+					Text="Salir"
+					Margin="90,0,0,0"
+					TextColor="AliceBlue"/>
 
 			</VerticalStackLayout>
 		</ScrollView>

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AppTFG.Modelo;
+﻿using AppTFG.Modelo;
 using SQLite;
 
 namespace AppTFG.Data
@@ -14,20 +9,26 @@ namespace AppTFG.Data
 
         public UserRepository()
         {
-            var dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "usuarios.db3");
+            var dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "usuarios.db3");
             conexionBBDD = new SQLiteConnection(dbPath);
             conexionBBDD.CreateTable<User>();
+            //conexionBBDD.CreateTable<UserListado>();
         }
 
-        public User GetUserInfo(string username, string password)
+        public User GetUserInfo(string username)
         {
-            var user = conexionBBDD.Table<User>().FirstOrDefault(u => u.Username == username && u.Password == password);
+            var user = conexionBBDD.Table<User>().FirstOrDefault(u => u.Username == username);
             return user;
         }
 
         public List<User> GetAllUsers()
         {
             return conexionBBDD.Table<User>().ToList();
+        }
+
+        public User GetUserById(int id)
+        {
+            return conexionBBDD.Get<User>(id);
         }
 
         public void AgregarUsuario(User user)

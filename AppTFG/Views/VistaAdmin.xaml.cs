@@ -62,7 +62,7 @@ namespace AppTFG.Views
             var user = (User)e.CurrentSelection.FirstOrDefault();
             if (user != null)
             {
-               // UpdateUserGrid.BackgroundColor = Color.FromHex("#0000FF");
+                // UpdateUserGrid.BackgroundColor = Color.FromHex("#0000FF");
                 UpdateUserGrid.BackgroundColor = Color.FromHex("#2736e3");
 
             }
@@ -81,7 +81,6 @@ namespace AppTFG.Views
 
         private void SaveNewUser(object sender, EventArgs e)
         {
-            // Comprueba que los campos no estén vacíos
             if (!string.IsNullOrWhiteSpace(NewUsernameEntry.Text) && !string.IsNullOrWhiteSpace(NewPasswordEntry.Text))
             {
                 var newUser = new User
@@ -89,15 +88,18 @@ namespace AppTFG.Views
                     Username = NewUsernameEntry.Text,
                     Password = NewPasswordEntry.Text
                 };
+
+                string granito3 = EncriptadorPWD.GranitoDeSal();
+                string pwdHasheada = EncriptadorPWD.HashearPWD(newUser.Password, granito3);
+                newUser.Password = pwdHasheada;
+                newUser.GranitoUser = granito3;
+
                 _userRepository.AgregarUsuario(newUser);
 
                 LoadData();
 
-                // Limpiar campos
                 NewUsernameEntry.Text = "";
                 NewPasswordEntry.Text = "";
-
-                // Ocultar CreateUserGrid
                 CreateUserGrid.IsVisible = false;
             }
         }

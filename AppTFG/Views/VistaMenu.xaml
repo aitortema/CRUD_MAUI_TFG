@@ -10,17 +10,27 @@
 			HorizontalOptions="Center"
 			Text="Elige qué quieres hacer:"
 			VerticalOptions="Center" />
+		<ImageButton
+			x:Name="btnAcercaDe"
+			Margin="0,15,0,0"
+			Clicked="btnAcercaDe_Clicked"
+			HorizontalOptions="Center"
+			MaximumHeightRequest="50"
+			MinimumWidthRequest="50"
+			Source="info.png" />
 		<Button
 			x:Name="btnCifrarTXT"
 			Margin="0,15,0,0"
+			BackgroundColor="Bisque"
 			Clicked="BtnVistaCifrarTXT"
 			HorizontalOptions="Center"
-			Text="Cifrar mensaje" />
+			Text="Cifrar - Descifrar mensaje" />
 		<Button
 			x:Name="btnCifrarIMG"
 			Margin="0,15,0,0"
+			BackgroundColor="Bisque"
 			Clicked="BtnVistaCifrarIMG"
 			HorizontalOptions="Center"
-			Text="Cifrar imagen" />
+			Text="Cifrar mensaje en imagen" />
 	</VerticalStackLayout>
 </ContentPage>

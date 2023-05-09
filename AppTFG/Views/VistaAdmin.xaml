@@ -14,26 +14,28 @@
 			Grid.Row="0"
 			Margin="10"
 			HorizontalOptions="Center"
-			Text="Panel de administrador"
+			Text="PANEL DE ADMINISTRADOR"
 			VerticalOptions="Center" />
 
 		<CollectionView
 			x:Name="dataCollectionView"
 			Grid.Row="1"
-			Margin="20"
+			Margin="20,10,20,70"
+			BackgroundColor="Black"
 			SelectionChanged="OnUserSelected"
 			SelectionMode="Single">
 			<CollectionView.ItemTemplate>
 				<DataTemplate>
 					<StackLayout Padding="10" Orientation="Horizontal">
 						<Label
-							FontSize="16"
+							FontSize="14"
 							HorizontalOptions="StartAndExpand"
 							Text="{Binding Username}" />
 						<Label
 							FontSize="14"
 							HorizontalOptions="EndAndExpand"
-							Text="{Binding Password}" />
+							Text="{Binding Password}"
+							VerticalOptions="Center" />
 					</StackLayout>
 				</DataTemplate>
 			</CollectionView.ItemTemplate>
@@ -131,11 +133,11 @@
 		</Grid>
 
 		<StackLayout
-			Spacing="10"
 			Grid.Row="1"
 			Margin="0,5,0,20"
 			HorizontalOptions="CenterAndExpand"
 			Orientation="Horizontal"
+			Spacing="10"
 			VerticalOptions="End">
 			<Button
 				x:Name="createButton"

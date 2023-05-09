@@ -6,23 +6,31 @@
 	xmlns:controls="http://schemas.microsoft.com/dotnet/2021/maui/controls"
 	xmlns:local="clr-namespace:AppTFG"
 	Title="Registro">
-	<StackLayout Padding="20" BackgroundColor="LightCoral">
+	<StackLayout Padding="20" BackgroundColor="DarkBlue">
 		<Label
 			Margin="0,0,0,20"
 			FontSize="Large"
 			HorizontalOptions="Center"
-			Text="Regístrate aquí" />
-		<Entry
-			x:Name="UsernameEntry"
-			HorizontalOptions="Center"
-			Placeholder="Usuario"
-			PlaceholderColor="Black" />
-		<Entry
-			x:Name="PasswordEntry"
-			HorizontalOptions="Center"
-			IsPassword="True"
-			Placeholder="Contraseña"
-			PlaceholderColor="Black" />
+			Text="Regístrate aquí"
+			TextColor="AliceBlue" />
+		<Frame
+			Padding="10"
+			BackgroundColor="DarkSlateBlue"
+			CornerRadius="10">
+			<StackLayout>
+				<Entry
+					x:Name="UsernameEntry"
+					HorizontalOptions="Center"
+					Placeholder="Usuario"
+					PlaceholderColor="AliceBlue" />
+				<Entry
+					x:Name="PasswordEntry"
+					HorizontalOptions="Center"
+					IsPassword="True"
+					Placeholder="Contraseña"
+					PlaceholderColor="AliceBlue" />
+			</StackLayout>
+		</Frame>
 		<Grid Margin="15" HorizontalOptions="Center">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="Auto" />
@@ -39,8 +47,7 @@
 				FontSize="12"
 				HorizontalOptions="Start"
 				Text="Aceptar términos de uso."
-				TextColor="DarkSlateGray" />
-
+				TextColor="DarkGoldenrod" />
 		</Grid>
 		<Button
 			x:Name="btnRegistrar"

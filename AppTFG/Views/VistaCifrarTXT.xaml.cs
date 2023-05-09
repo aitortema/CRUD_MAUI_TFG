@@ -1,5 +1,4 @@
 using AppTFG.Modelo;
-using Microsoft.Maui.Controls;
 
 namespace AppTFG.Views
 {
@@ -17,10 +16,6 @@ namespace AppTFG.Views
             if (int.TryParse(e.NewTextValue, out int valorCifrador) && valorCifrador >= 1 && valorCifrador <= 25)
             {
                 CifradoEscogido = valorCifrador;
-            }
-            else
-            {
-                CifradoEscogido = 0;
             }
         }
 
@@ -86,6 +81,7 @@ namespace AppTFG.Views
             txtResEditorCifrado.Text = cifrado;
             Clipboard.SetTextAsync(cifrado);
             DisplayAlert("Éxito 😀", $"Mensaje copiado al portapapeles: {cifrado}", "OK");
+
         }
 
         private void Descifrar_Clicked(object sender, EventArgs e)
@@ -117,6 +113,11 @@ namespace AppTFG.Views
             txtResEditorDescifrado.Text = descifrado;
             Clipboard.SetTextAsync(descifrado);
             DisplayAlert("Éxito 😀", $"Mensaje copiado al portapapeles: {descifrado}", "OK");
+        }
+
+        private async void Salir_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopAsync();
         }
 
     }

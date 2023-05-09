@@ -7,8 +7,8 @@
 	<ScrollView VerticalOptions="Center">
 		<Grid HorizontalOptions="Center">
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="*" />
-				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="200" />
+				<ColumnDefinition Width="200" />
 			</Grid.ColumnDefinitions>
 			<Grid.RowDefinitions>
 				<RowDefinition Height="Auto" />
@@ -18,37 +18,37 @@
 				<RowDefinition Height="Auto" />
 				<RowDefinition Height="Auto" />
 				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
 			</Grid.RowDefinitions>
+
+			<!--  TÍTULO  -->
+			<Label
+				Grid.Row="0"
+				Grid.Column="0"
+				Margin="10,10,0,0"
+				FontAttributes="Bold"
+				FontSize="14"
+				Text="CIFRAR" />
+
 			<!--  FONDO CIFRAR MENSAJE  -->
 			<BoxView
-				Grid.Row="0"
+				Grid.Row="1"
 				Grid.RowSpan="7"
 				Grid.Column="0"
 				Margin="2"
 				Opacity="0.5"
 				Color="LightBlue" />
 
-			<!--  FONDO DESCIFRAR MENSAJE  -->
-			<BoxView
-				Grid.Row="0"
-				Grid.RowSpan="7"
-				Grid.Column="1"
-				Margin="2"
-				Opacity="0.5"
-				Color="LightGreen" />
-			<!--  SECCIÓN CIFRAR MENSAJE  -->
-			<Label
-				Grid.Row="0"
-				Grid.Column="0"
-				Margin="10,10,0,0"
-				FontSize="12"
-				Text="1. Escribe tu mensaje:" />
+			<!--#region CIFRAR MENSAJE-->
 			<Entry
 				x:Name="mensajeAcifrar"
 				Grid.Row="1"
 				Grid.Column="0"
-				Margin="10,0,0,10"
-				Placeholder="Mensaje a cifrar" />
+				Margin="00,0,0,10"
+				FontSize="12"
+				Placeholder="1. Pega tu mensaje:"
+				PlaceholderColor="White" />
 			<Picker
 				x:Name="picker"
 				Title="2. Método de cifrado"
@@ -77,20 +77,49 @@
 				Grid.Row="5"
 				Grid.Column="0"
 				Margin="10,0,0,0"
-				HeightRequest="75" />
-			<!--  SECCIÓN DESCIFRAR MENSAJE  -->
+				HeightRequest="75"
+				IsEnabled="False" />
+
+			<!--  Botón de envío para CIFRAR  -->
+			<ImageButton
+				Grid.Row="7"
+				Grid.Column="0"
+				Margin="0,10,0,10"
+				Clicked="Cifrar_Clicked"
+				HorizontalOptions="Center"
+				Source="candadoc.png"
+				WidthRequest="50" />
+			<!--#endregion-->
+
+			<!--  TÍTULO  -->
 			<Label
 				Grid.Row="0"
 				Grid.Column="1"
 				Margin="10,10,0,0"
-				FontSize="12"
-				Text="1. Pega tu mensaje:" />
+				FontAttributes="Bold"
+				FontSize="14"
+				Text="DESCIFRAR" />
+
+			<!--  FONDO DESCIFRAR MENSAJE  -->
+			<BoxView
+				Grid.Row="1"
+				Grid.RowSpan="7"
+				Grid.Column="1"
+				Margin="2"
+				Opacity="0.5"
+				Color="LightGreen" />
+
+			<!--#region DESCIFRAR MENSAJE-->
+
+			<!--  SECCIÓN DESCIFRAR MENSAJE  -->
 			<Entry
 				x:Name="mensajeAdescifrar"
 				Grid.Row="1"
 				Grid.Column="1"
-				Margin="10,0,0,10"
-				Placeholder="Mensaje a descifrar" />
+				Margin="0,0,0,10"
+				FontSize="12"
+				Placeholder="1. Pega tu mensaje:"
+				PlaceholderColor="White" />
 			<Picker
 				x:Name="pickerDescifrar"
 				Title="2. Método de descifrado"
@@ -112,11 +141,14 @@
 				x:Name="cifradoEscogido"
 				Grid.Row="3"
 				Grid.ColumnSpan="2"
+				BackgroundColor="DarkBlue"
 				HorizontalOptions="Center"
 				IsVisible="false"
 				Keyboard="Numeric"
 				Placeholder="Escribe clave o rotación"
-				TextChanged="CifradoEscogido_TextChanged" />
+				PlaceholderColor="DarkGray"
+				TextChanged="CifradoEscogido_TextChanged"
+				VerticalTextAlignment="Center" />
 			<Label
 				Grid.Row="4"
 				Grid.Column="1"
@@ -129,26 +161,29 @@
 				Grid.Column="1"
 				Margin="10,0,0,0"
 				HeightRequest="75" />
-			<!--  Botón de envío para CIFRAR  -->
-			<ImageButton
-				Grid.Row="6"
-				Grid.Column="0"
-				Margin="0,10,0,10"
-				Clicked="Cifrar_Clicked"
-				HorizontalOptions="Center"
-				Source="candadoC.png"
-				WidthRequest="50" />
 
 			<!--  Botón de envío para DESCIFRAR  -->
 			<ImageButton
-				Grid.Row="6"
+				Grid.Row="7"
 				Grid.Column="1"
 				Margin="0,10,0,10"
 				Clicked="Descifrar_Clicked"
 				HorizontalOptions="Center"
-				Source="candadoA.png"
+				Source="candadoa.png"
 				WidthRequest="50" />
+			<!--#endregion-->
 
+			<!--  Botón Salir  -->
+			<ImageButton
+				Grid.Row="8"
+				Grid.Column="1"
+				Grid.ColumnSpan="2"
+				Margin="0,10,0,10"
+				BackgroundColor="Transparent"
+				Clicked="Salir_Clicked"
+				HorizontalOptions="Center"
+				Source="flechaback.png"
+				WidthRequest="50" />
 		</Grid>
 	</ScrollView>
 </ContentPage>

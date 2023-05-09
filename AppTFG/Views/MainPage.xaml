@@ -3,7 +3,7 @@
 	x:Class="AppTFG.MainPage"
 	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-	Title="Top Secret">
+	Title="Top Secret - Tu app de cifrado de confianza">
 	<Shell.TitleView>
 		<Grid>
 			<Label
@@ -19,9 +19,7 @@
 			Source="https://www.wallpaperflare.com/static/526/367/582/highlights-circles-blurred-circles-wallpaper.jpg" />
 		<ScrollView>
 			<VerticalStackLayout Spacing="10" VerticalOptions="Center">
-				<Image
-					Aspect="Center"
-					Source="logotopsecret.png" />
+				<Image Aspect="Center" Source="logotopsecret.png" />
 				<HorizontalStackLayout HorizontalOptions="Center">
 					<Label
 						Margin="0,0,30,0"
@@ -55,6 +53,7 @@
 						PlaceholderColor="DarkGray" />
 				</HorizontalStackLayout>
 
+				<!--  LOGIN  -->
 				<Button
 					x:Name="loginButton"
 					BackgroundColor="DarkCyan"
@@ -64,6 +63,7 @@
 					TextColor="AliceBlue"
 					WidthRequest="150" />
 
+				<!--  REGISTRO  -->
 				<Button
 					x:Name="registerButton"
 					BackgroundColor="DarkCyan"
@@ -73,15 +73,15 @@
 					TextColor="AliceBlue"
 					WidthRequest="150" />
 
-				<!--  Exit app button  -->
+				<!--  SALIR  -->
 				<Button
 					x:Name="btnSalir"
-					Clicked="btnSalir_Clicked"
+					Margin="90,0,0,0"
 					BackgroundColor="DarkRed"
+					Clicked="btnSalir_Clicked"
 					HorizontalOptions="Center"
 					Text="Salir"
-					Margin="90,0,0,0"
-					TextColor="AliceBlue"/>
+					TextColor="AliceBlue" />
 
 			</VerticalStackLayout>
 		</ScrollView>

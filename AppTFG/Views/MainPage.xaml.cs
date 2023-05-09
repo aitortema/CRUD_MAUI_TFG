@@ -1,4 +1,5 @@
 ﻿using AppTFG.Data;
+using AppTFG.Modelo;
 using AppTFG.Views;
 
 namespace AppTFG
@@ -13,20 +14,31 @@ namespace AppTFG
         private async void LoginButton_Clicked(object sender, EventArgs e)
         {
             var userRepository = new UserRepository();
-            var user = userRepository.GetUserInfo(usernameEntry.Text, passwordEntry.Text);
+            var user = userRepository.GetUserInfo(usernameEntry.Text);
 
             if (user != null)
             {
-                string mensaje = "¡Bienvenido " + user.Username + "!";
-                await DisplayAlert("Inicio de sesión correcto", mensaje, "OK");
+                // Hashear la contraseña ingresada con el grano de sal almacenado para el usuario
+                string hashedPassword = EncriptadorPWD.HashearPWD(passwordEntry.Text, user.GranitoUser);
 
-                if (user.Username.ToLower() == "a" && passwordEntry.Text == "a")
+                // Verificar si la contraseña hasheada coincide con la almacenada en la base de datos
+                if (user.Password == hashedPassword)
                 {
-                    await Navigation.PushAsync(new VistaAdmin());
+                    string mensaje = "¡Bienvenido " + user.Username + "!";
+                    await DisplayAlert("Inicio de sesión correcto", mensaje, "OK");
+
+                    if (user.Username.ToLower() == "aitor" && passwordEntry.Text == "1234")
+                    {
+                        await Navigation.PushAsync(new VistaAdmin());
+                    }
+                    else
+                    {
+                        await Navigation.PushAsync(new VistaMenu());
+                    }
                 }
                 else
                 {
-                    await Navigation.PushAsync(new VistaMenu());
+                    await DisplayAlert("ERROR", "Credenciales incorrectas", "Volver");
                 }
             }
             else
@@ -34,6 +46,7 @@ namespace AppTFG
                 await DisplayAlert("ERROR", "Credenciales incorrectas", "Volver");
             }
         }
+
 
         private async void RegisterButton_Clicked(object sender, EventArgs e)
         {

@@ -4,186 +4,210 @@
 	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	Title="Cifrar mensajes">
-	<ScrollView VerticalOptions="Center">
-		<Grid HorizontalOptions="Center">
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="200" />
-				<ColumnDefinition Width="200" />
-			</Grid.ColumnDefinitions>
-			<Grid.RowDefinitions>
-				<RowDefinition Height="Auto" />
-				<RowDefinition Height="Auto" />
-				<RowDefinition Height="Auto" />
-				<RowDefinition Height="Auto" />
-				<RowDefinition Height="Auto" />
-				<RowDefinition Height="Auto" />
-				<RowDefinition Height="Auto" />
-				<RowDefinition Height="Auto" />
-				<RowDefinition Height="Auto" />
-			</Grid.RowDefinitions>
+	<Grid>
+		<Image Aspect="AspectFill" Source="ruta_de_la_imagen.jpg" />
+		<ScrollView VerticalOptions="Center">
+			<Grid HorizontalOptions="Center">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="200" />
+					<ColumnDefinition Width="200" />
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
 
-			<!--  TÍTULO  -->
-			<Label
-				Grid.Row="0"
-				Grid.Column="0"
-				Margin="10,10,0,0"
-				FontAttributes="Bold"
-				FontSize="14"
-				Text="CIFRAR" />
+				<!--  TÍTULO  -->
+				<Label
+					Grid.Row="0"
+					Grid.Column="0"
+					Margin="10,10,0,0"
+					FontAttributes="Bold"
+					FontSize="14"
+					Text="CIFRAR" />
 
-			<!--  FONDO CIFRAR MENSAJE  -->
-			<BoxView
-				Grid.Row="1"
-				Grid.RowSpan="7"
-				Grid.Column="0"
-				Margin="2"
-				Opacity="0.5"
-				Color="LightBlue" />
+				<!--  FONDO CIFRAR MENSAJE  -->
+				<BoxView
+					Grid.Row="1"
+					Grid.RowSpan="7"
+					Grid.Column="0"
+					Margin="2"
+					Opacity="0.5"
+					Color="LightBlue" />
 
-			<!--#region CIFRAR MENSAJE-->
-			<Entry
-				x:Name="mensajeAcifrar"
-				Grid.Row="1"
-				Grid.Column="0"
-				Margin="00,0,0,10"
-				FontSize="12"
-				Placeholder="1. Pega tu mensaje:"
-				PlaceholderColor="White" />
-			<Picker
-				x:Name="picker"
-				Title="2. Método de cifrado"
-				Grid.Row="2"
-				Grid.Column="0"
-				Margin="10,0,0,0"
-				FontSize="12"
-				SelectedIndexChanged="PickerCifrado"
-				TitleColor="White">
-				<Picker.Items>
-					<x:String>Morse</x:String>
-					<x:String>Base64</x:String>
-					<x:String>Binario</x:String>
-					<x:String>Cesar</x:String>
-					<x:String>Vigenere</x:String>
-				</Picker.Items>
-			</Picker>
-			<Label
-				Grid.Row="4"
-				Grid.Column="0"
-				Margin="10,10,0,0"
-				FontSize="12"
-				Text="3. Resultado: " />
-			<Editor
-				x:Name="txtResEditorCifrado"
-				Grid.Row="5"
-				Grid.Column="0"
-				Margin="10,0,0,0"
-				HeightRequest="75"
-				IsEnabled="False" />
+				<!--#region CIFRAR MENSAJE-->
+				<Entry
+					x:Name="mensajeAcifrar"
+					Grid.Row="1"
+					Grid.Column="0"
+					Margin="00,0,0,10"
+					FontSize="12"
+					Placeholder="1. Pega tu mensaje:"
+					PlaceholderColor="White" />
+				<Picker
+					x:Name="picker"
+					Title="2. Método de cifrado"
+					Grid.Row="2"
+					Grid.Column="0"
+					Margin="10,0,0,0"
+					FontSize="12"
+					SelectedIndexChanged="PickerCifrado"
+					TitleColor="White">
+					<Picker.Items>
+						<x:String>Morse</x:String>
+						<x:String>Base64</x:String>
+						<x:String>Binario</x:String>
+						<x:String>Cesar</x:String>
+						<x:String>Vigenere</x:String>
+					</Picker.Items>
+				</Picker>
+				<Label
+					Grid.Row="4"
+					Grid.Column="0"
+					Margin="10,10,0,0"
+					FontSize="12"
+					Text="3. Resultado: " />
+				<Editor
+					x:Name="txtResEditorCifrado"
+					Grid.Row="5"
+					Grid.Column="0"
+					Margin="10,0,0,0"
+					HeightRequest="75"
+					IsEnabled="False" />
 
-			<!--  Botón de envío para CIFRAR  -->
-			<ImageButton
-				Grid.Row="7"
-				Grid.Column="0"
-				Margin="0,10,0,10"
-				Clicked="Cifrar_Clicked"
-				HorizontalOptions="Center"
-				Source="candadoc.png"
-				WidthRequest="50" />
-			<!--#endregion-->
+				<!--  Botón de envío para CIFRAR  -->
+				<ImageButton
+					Grid.Row="7"
+					Grid.Column="0"
+					Margin="0,10,20,10"
+					Clicked="Cifrar_Clicked"
+					HorizontalOptions="Center"
+					Source="candadoc.png"
+					ToolTipProperties.Text="¡Cifrar!"
+					WidthRequest="50" />
+				<ImageButton
+					Grid.Row="7"
+					Grid.Column="0"
+					Margin="100,10,0,10"
+					Clicked="GuardarResultado_Clicked"
+					HorizontalOptions="Center"
+					Source="gifsave.gif"
+					ToolTipProperties.Text="Guardar"
+					WidthRequest="50" />
+				<!--#endregion-->
 
-			<!--  TÍTULO  -->
-			<Label
-				Grid.Row="0"
-				Grid.Column="1"
-				Margin="10,10,0,0"
-				FontAttributes="Bold"
-				FontSize="14"
-				Text="DESCIFRAR" />
+				<!--  TÍTULO  -->
+				<Label
+					Grid.Row="0"
+					Grid.Column="1"
+					Margin="10,10,0,0"
+					FontAttributes="Bold"
+					FontSize="14"
+					Text="DESCIFRAR" />
 
-			<!--  FONDO DESCIFRAR MENSAJE  -->
-			<BoxView
-				Grid.Row="1"
-				Grid.RowSpan="7"
-				Grid.Column="1"
-				Margin="2"
-				Opacity="0.5"
-				Color="LightGreen" />
+				<!--  FONDO DESCIFRAR MENSAJE  -->
+				<BoxView
+					Grid.Row="1"
+					Grid.RowSpan="7"
+					Grid.Column="1"
+					Margin="2"
+					Opacity="0.5"
+					Color="LightGreen" />
 
-			<!--#region DESCIFRAR MENSAJE-->
+				<!--#region DESCIFRAR MENSAJE-->
 
-			<!--  SECCIÓN DESCIFRAR MENSAJE  -->
-			<Entry
-				x:Name="mensajeAdescifrar"
-				Grid.Row="1"
-				Grid.Column="1"
-				Margin="0,0,0,10"
-				FontSize="12"
-				Placeholder="1. Pega tu mensaje:"
-				PlaceholderColor="White" />
-			<Picker
-				x:Name="pickerDescifrar"
-				Title="2. Método de descifrado"
-				Grid.Row="2"
-				Grid.Column="1"
-				Margin="10,0,0,0"
-				FontSize="12"
-				SelectedIndexChanged="PickerDescifrado"
-				TitleColor="White">
-				<Picker.Items>
-					<x:String>Morse</x:String>
-					<x:String>Base64</x:String>
-					<x:String>Binario</x:String>
-					<x:String>Cesar</x:String>
-					<x:String>Vigenere</x:String>
-				</Picker.Items>
-			</Picker>
-			<Entry
-				x:Name="cifradoEscogido"
-				Grid.Row="3"
-				Grid.ColumnSpan="2"
-				BackgroundColor="DarkBlue"
-				HorizontalOptions="Center"
-				IsVisible="false"
-				Keyboard="Numeric"
-				Placeholder="Escribe clave o rotación"
-				PlaceholderColor="DarkGray"
-				TextChanged="CifradoEscogido_TextChanged"
-				VerticalTextAlignment="Center" />
-			<Label
-				Grid.Row="4"
-				Grid.Column="1"
-				Margin="10,10,0,0"
-				FontSize="12"
-				Text="3. Resultado: " />
-			<Editor
-				x:Name="txtResEditorDescifrado"
-				Grid.Row="5"
-				Grid.Column="1"
-				Margin="10,0,0,0"
-				HeightRequest="75" />
+				<!--  SECCIÓN DESCIFRAR MENSAJE  -->
+				<Entry
+					x:Name="mensajeAdescifrar"
+					Grid.Row="1"
+					Grid.Column="1"
+					Margin="0,0,0,10"
+					FontSize="12"
+					Placeholder="1. Pega tu mensaje:"
+					PlaceholderColor="White" />
+				<Picker
+					x:Name="pickerDescifrar"
+					Title="2. Método de descifrado"
+					Grid.Row="2"
+					Grid.Column="1"
+					Margin="10,0,0,0"
+					FontSize="12"
+					SelectedIndexChanged="PickerDescifrado"
+					TitleColor="White">
+					<Picker.Items>
+						<x:String>Morse</x:String>
+						<x:String>Base64</x:String>
+						<x:String>Binario</x:String>
+						<x:String>Cesar</x:String>
+						<x:String>Vigenere</x:String>
+					</Picker.Items>
+				</Picker>
+				<Entry
+					x:Name="cifradoEscogido"
+					Grid.Row="3"
+					Grid.ColumnSpan="2"
+					BackgroundColor="DarkBlue"
+					HorizontalOptions="Center"
+					IsVisible="false"
+					Keyboard="Numeric"
+					Placeholder="Escribe clave o rotación"
+					PlaceholderColor="DarkGray"
+					TextChanged="CifradoEscogido_TextChanged"
+					VerticalTextAlignment="Center" />
+				<Label
+					Grid.Row="4"
+					Grid.Column="1"
+					Margin="10,10,0,0"
+					FontSize="12"
+					Text="3. Resultado: " />
+				<Editor
+					x:Name="txtResEditorDescifrado"
+					Grid.Row="5"
+					Grid.Column="1"
+					Margin="10,0,0,0"
+					HeightRequest="75" />
 
-			<!--  Botón de envío para DESCIFRAR  -->
-			<ImageButton
-				Grid.Row="7"
-				Grid.Column="1"
-				Margin="0,10,0,10"
-				Clicked="Descifrar_Clicked"
-				HorizontalOptions="Center"
-				Source="candadoa.png"
-				WidthRequest="50" />
-			<!--#endregion-->
+				<!--  Botón de envío para DESCIFRAR  -->
+				<ImageButton
+					Grid.Row="7"
+					Grid.Column="1"
+					Margin="0,10,0,10"
+					Clicked="Descifrar_Clicked"
+					HorizontalOptions="Center"
+					Source="candadoa.png"
+					ToolTipProperties.Text="¡Descifrar!"
+					WidthRequest="50" />
+				<!--#endregion-->
 
-			<!--  Botón Salir  -->
-			<ImageButton
-				Grid.Row="8"
-				Grid.Column="1"
-				Grid.ColumnSpan="2"
-				Margin="0,10,0,10"
-				BackgroundColor="Transparent"
-				Clicked="Salir_Clicked"
-				HorizontalOptions="Center"
-				Source="flechaback.png"
-				WidthRequest="50" />
-		</Grid>
-	</ScrollView>
+				<!--  Botón Salir  -->
+				<ImageButton
+					Grid.Row="8"
+					Grid.Column="1"
+					Grid.ColumnSpan="2"
+					Margin="0,10,0,10"
+					BackgroundColor="Transparent"
+					Clicked="Salir_Clicked"
+					HorizontalOptions="Center"
+					Source="flechaback.png"
+					WidthRequest="50" />
+				<ImageButton
+					Grid.Row="7"
+					Grid.Column="1"
+					Margin="100,10,0,10"
+					BackgroundColor="Transparent"
+					Clicked="GuardarResultado_Clicked"
+					HorizontalOptions="Center"
+					Source="gifsave.gif"
+					ToolTipProperties.Text="Guardar"
+					WidthRequest="50" />
+			</Grid>
+		</ScrollView>
+	</Grid>
 </ContentPage>

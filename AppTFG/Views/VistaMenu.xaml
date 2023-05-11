@@ -3,34 +3,115 @@
 	x:Class="AppTFG.Views.VistaMenu"
 	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-	Title="Opciones">
-	<VerticalStackLayout>
+	Title="Opciones"
+	BackgroundImageSource="https://cdn.pixabay.com/animation/2023/01/26/05/20/05-20-36-559_512.gif">
+
+	<VerticalStackLayout HorizontalOptions="Center" Spacing="10">
+
 		<Label
-			Margin="0,15,0,15"
+			Margin="0,15,0,1"
+			Padding="20,5,20,5"
+			BackgroundColor="Black"
 			HorizontalOptions="Center"
-			Text="Elige qué quieres hacer:"
+			Text="👉 Menú Top Secret"
 			VerticalOptions="Center" />
-		<ImageButton
-			x:Name="btnAcercaDe"
-			Margin="0,15,0,0"
-			Clicked="btnAcercaDe_Clicked"
-			HorizontalOptions="Center"
-			MaximumHeightRequest="50"
-			MinimumWidthRequest="50"
-			Source="info.png" />
-		<Button
-			x:Name="btnCifrarTXT"
-			Margin="0,15,0,0"
-			BackgroundColor="Bisque"
-			Clicked="BtnVistaCifrarTXT"
-			HorizontalOptions="Center"
-			Text="Cifrar - Descifrar mensaje" />
-		<Button
-			x:Name="btnCifrarIMG"
-			Margin="0,15,0,0"
-			BackgroundColor="Bisque"
-			Clicked="BtnVistaCifrarIMG"
-			HorizontalOptions="Center"
-			Text="Cifrar mensaje en imagen" />
+
+		<HorizontalStackLayout HorizontalOptions="Start">
+			<ImageButton
+				x:Name="btnAcercaDe"
+				Clicked="btnAcercaDe_Clicked"
+				MaximumHeightRequest="70"
+				MinimumWidthRequest="70"
+				Source="gifprofile.gif" />
+			<Label
+				Margin="10,15,0,0"
+				Padding="5"
+				BackgroundColor="#99A73A80"
+				Text="TopSecretApp"
+				TextColor="White"
+				VerticalOptions="Center" />
+		</HorizontalStackLayout>
+
+		<HorizontalStackLayout HorizontalOptions="Start">
+			<ImageButton
+				x:Name="btnCifrarTXT"
+				Clicked="BtnVistaCifrarTXT"
+				MaximumHeightRequest="70"
+				MinimumWidthRequest="70"
+				Source="gifcifrar.gif" />
+			<Label
+				Margin="10,15,0,0"
+				Padding="5"
+				BackgroundColor="#99A73A80"
+				Text="Cifrar texto"
+				TextColor="White"
+				VerticalOptions="Center" />
+		</HorizontalStackLayout>
+
+		<HorizontalStackLayout HorizontalOptions="Start">
+			<ImageButton
+				x:Name="btnCifrarIMG"
+				Clicked="BtnVistaCifrarIMG"
+				MaximumHeightRequest="70"
+				MinimumWidthRequest="70"
+				Source="gifimagen.gif" />
+			<Label
+				Margin="10,15,0,0"
+				Padding="5"
+				BackgroundColor="#99A73A80"
+				Text="Cifrar imagen"
+				TextColor="White"
+				VerticalOptions="Center" />
+		</HorizontalStackLayout>
+
+		<HorizontalStackLayout>
+			<ImageButton
+				x:Name="btnCompartir"
+				Clicked="BtnCompartir_Clicked"
+				MaximumHeightRequest="70"
+				MinimumWidthRequest="70"
+				Source="gifcompartir.gif" />
+			<Label
+				Margin="10,15,0,0"
+				Padding="5"
+				BackgroundColor="#99A73A80"
+				Text="Compartir"
+				TextColor="White"
+				VerticalOptions="Center" />
+		</HorizontalStackLayout>
+
+		<HorizontalStackLayout>
+			<ImageButton
+				x:Name="btnCodigo"
+				Clicked="btnCodigo_Clicked"
+				HorizontalOptions="Center"
+				MaximumHeightRequest="70"
+				MinimumWidthRequest="70"
+				Source="gifdownload.gif" />
+			<Label
+				Margin="10,15,0,0"
+				Padding="5"
+				BackgroundColor="#99A73A80"
+				Text="Código fuente"
+				TextColor="White"
+				VerticalOptions="Center" />
+		</HorizontalStackLayout>
+
+		<HorizontalStackLayout>
+			<ImageButton
+				x:Name="btnSalir"
+				Clicked="btnSalir_Clicked"
+				HorizontalOptions="Center"
+				MaximumHeightRequest="70"
+				MinimumWidthRequest="70"
+				Source="gifbyebye.gif" />
+			<Label
+				Margin="10,15,0,0"
+				Padding="5"
+				BackgroundColor="#99A73A80"
+				Text="Salir"
+				TextColor="White"
+				VerticalOptions="Center" />
+		</HorizontalStackLayout>
 	</VerticalStackLayout>
 </ContentPage>

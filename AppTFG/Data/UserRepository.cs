@@ -12,7 +12,7 @@ namespace AppTFG.Data
             var dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "usuarios.db3");
             conexionBBDD = new SQLiteConnection(dbPath);
             conexionBBDD.CreateTable<User>();
-            //conexionBBDD.CreateTable<UserListado>();
+            conexionBBDD.CreateTable<Mensajes>();
         }
 
         public User GetUserInfo(string username)

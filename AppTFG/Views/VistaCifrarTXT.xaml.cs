@@ -120,5 +120,11 @@ namespace AppTFG.Views
             await Navigation.PopAsync();
         }
 
+        private void GuardarResultado_Clicked(object sender, EventArgs e)
+        {
+            // guardar mensaje en base de datos
+            string mensajeCifrado = txtResEditorCifrado.Text;
+            string mensajeDescifrado = txtResEditorDescifrado.Text;
+        }
     }
 }

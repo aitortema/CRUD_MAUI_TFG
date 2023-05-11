@@ -45,8 +45,8 @@ namespace AppTFG.Views
 
             if (userToDelete != null)
             {
-                bool confirm = await DisplayAlert("Eliminar usuario", $"¿Estás seguro de que deseas eliminar a {userToDelete.Username}?", "Sí", "No");
-                if (confirm)
+                bool confirmar = await DisplayAlert("Eliminar usuario", $"¿Estás seguro de que deseas eliminar a {userToDelete.Username}?", "Sí", "No");
+                if (confirmar)
                 {
                     _userRepository.BorrarUsuario(userToDelete.Id);
                     LoadData();
@@ -110,7 +110,7 @@ namespace AppTFG.Views
             NewUsernameEntry.Text = "";
             NewPasswordEntry.Text = "";
 
-            // Ocultar
+            // Ocultar vista
             CreateUserGrid.IsVisible = false;
         }
 
@@ -120,10 +120,14 @@ namespace AppTFG.Views
 
             if (userToUpdate != null)
             {
+                string granito4 = EncriptadorPWD.GranitoDeSal();
+                string pwdHasheada = EncriptadorPWD.HashearPWD(PasswordEntry.Text, granito4);
                 userToUpdate.Username = UsernameEntry.Text;
-                userToUpdate.Password = PasswordEntry.Text;
+                userToUpdate.Password = pwdHasheada;
+
                 _userRepository.UpdateUsuario(userToUpdate);
-                LoadData();
+                
+                LoadData(); // ACTUALIZAR USUARIOS
             }
 
             UpdateUserGrid.IsVisible = false;

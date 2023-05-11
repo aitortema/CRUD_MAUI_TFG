@@ -27,7 +27,26 @@ public partial class VistaMenu : ContentPage
 
     private async void btnAcercaDe_Clicked(object sender, EventArgs e)
     {
-        await DisplayAlert("😥", "EN CONSTRUCCIÓN", "Volver");
+        await DisplayAlert("Información", "Con esta app podrás cifrar y descifrar mensajes personales usando algoritmos clásicos, algoritmos más modernos con mejor seguridad y enviarlos codificados a un destinatario.\n\n¡Úsala y comparte! 😀", "OK");
     }
 
+    private async void btnCodigo_Clicked(object sender, EventArgs e)
+    {
+        await DisplayAlert("😀", "¡A por el código fuente!", "OK");
+        await Microsoft.Maui.ApplicationModel.Browser.OpenAsync("https://github.com/aitortema/CRUD_MAUI_TFG/tree/master/AppTFG");
+    }
+
+    private async void BtnCompartir_Clicked(object sender, EventArgs e)
+    {
+        var request = new Microsoft.Maui.ApplicationModel.DataTransfer.ShareTextRequest
+        {
+            Text = "¡Mira esta app para cifrar y descifrar mensajes!"
+        };
+        await Microsoft.Maui.ApplicationModel.DataTransfer.Share.RequestAsync(request);
+    }
+
+    private void btnSalir_Clicked(object sender, EventArgs e)
+    {
+        System.Diagnostics.Process.GetCurrentProcess().CloseMainWindow();
+    }
 }

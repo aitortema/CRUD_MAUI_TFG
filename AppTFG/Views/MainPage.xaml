@@ -3,27 +3,30 @@
 	x:Class="AppTFG.MainPage"
 	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-	Title="Top Secret - Tu app de cifrado de confianza">
+	Title="Top Secret - Tu app de cifrado de confianza"
+	BackgroundImageSource="https://cdn.pixabay.com/animation/2022/12/01/02/22/02-22-03-942_512.gif">
 	<Shell.TitleView>
 		<Grid>
 			<Label
 				HorizontalOptions="Center"
-				Text="Top Secret"
+				Text="Top Secret - Aitor Paz. 2023"
 				VerticalOptions="Center" />
 		</Grid>
 	</Shell.TitleView>
 	<Grid>
-		<Image
+		<!--<Image
 			Margin="0,5,0,0"
 			Aspect="Center"
-			Source="https://www.wallpaperflare.com/static/526/367/582/highlights-circles-blurred-circles-wallpaper.jpg" />
+			Source="https://www.wallpaperflare.com/static/526/367/582/highlights-circles-blurred-circles-wallpaper.jpg" />-->
+		<ImageButton Source="https://cdn.pixabay.com/animation/2022/10/13/14/20/14-20-47-878_512.gif" />
 		<ScrollView>
-			<VerticalStackLayout Spacing="10" VerticalOptions="Center">
-				<Image Aspect="Center" Source="logotopsecret.png" />
-				<HorizontalStackLayout HorizontalOptions="Center">
+			<VerticalStackLayout Spacing="5" VerticalOptions="Center">
+				<!--<Image Aspect="Center" Source="logotopsecret.png" />-->
+				<HorizontalStackLayout BackgroundColor="#99A07A80" HorizontalOptions="Center">
 					<Label
-						Margin="0,0,30,0"
-						FontSize="12"
+						Padding="10"
+						BackgroundColor="#99A03A80"
+						FontSize="14"
 						HorizontalOptions="Center"
 						Text="Usuario:"
 						VerticalTextAlignment="Center" />
@@ -33,13 +36,14 @@
 						HorizontalOptions="Center"
 						Keyboard="Text"
 						Placeholder="Introduce usuario"
-						PlaceholderColor="DarkGray" />
+						PlaceholderColor="AliceBlue" />
 				</HorizontalStackLayout>
 
-				<HorizontalStackLayout HorizontalOptions="Center">
+				<HorizontalStackLayout BackgroundColor="#99A07A80" HorizontalOptions="Center">
 					<Label
-						Margin="0,0,26,0"
-						FontSize="12"
+						Padding="10"
+						BackgroundColor="#99A03A80"
+						FontSize="14"
 						HorizontalOptions="Center"
 						Text="Contraseña:"
 						VerticalTextAlignment="Center" />
@@ -50,13 +54,13 @@
 						IsPassword="True"
 						Keyboard="Text"
 						Placeholder="Introduce contraseña"
-						PlaceholderColor="DarkGray" />
+						PlaceholderColor="AliceBlue" />
 				</HorizontalStackLayout>
 
 				<!--  LOGIN  -->
 				<Button
 					x:Name="loginButton"
-					BackgroundColor="DarkCyan"
+					BackgroundColor="DarkBlue"
 					Clicked="LoginButton_Clicked"
 					HorizontalOptions="FillAndExpand"
 					Text="Iniciar sesión"
@@ -66,7 +70,7 @@
 				<!--  REGISTRO  -->
 				<Button
 					x:Name="registerButton"
-					BackgroundColor="DarkCyan"
+					BackgroundColor="DarkSlateBlue"
 					Clicked="RegisterButton_Clicked"
 					HorizontalOptions="FillAndExpand"
 					Text="Registrarse"
@@ -76,7 +80,7 @@
 				<!--  SALIR  -->
 				<Button
 					x:Name="btnSalir"
-					Margin="90,0,0,0"
+					Margin="90,20,0,0"
 					BackgroundColor="DarkRed"
 					Clicked="btnSalir_Clicked"
 					HorizontalOptions="Center"

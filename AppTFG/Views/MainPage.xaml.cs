@@ -1,11 +1,14 @@
 ﻿using AppTFG.Data;
 using AppTFG.Modelo;
 using AppTFG.Views;
+using Microsoft.Maui.Controls;
 
 namespace AppTFG
 {
     public partial class MainPage : ContentPage
     {
+        public int IdUsuarioActivo { get; set; }
+
         public MainPage()
         {
             InitializeComponent();
@@ -24,15 +27,18 @@ namespace AppTFG
                 // Verificar si la contraseña hasheada coincide con la almacenada en la base de datos
                 if (user.Password == hashedPassword)
                 {
+                    //IdUsuarioActivo = user.Id; // Guardar id para después guardar mensajes
                     string mensaje = "¡Bienvenido " + user.Username + "!";
                     await DisplayAlert("Inicio de sesión correcto", mensaje, "OK");
 
-                    if (user.Username.ToLower() == "aitor" && passwordEntry.Text == "1234")
+                    if (user.Username == "aitor" && passwordEntry.Text == "1234")
                     {
                         await Navigation.PushAsync(new VistaAdmin());
                     }
                     else
                     {
+                        VistaCifrarTXT vistaCifrar = new VistaCifrarTXT();
+                        //vistaCifrar.IdUsuarioActivo = user.Id;
                         await Navigation.PushAsync(new VistaMenu());
                     }
                 }
@@ -46,7 +52,6 @@ namespace AppTFG
                 await DisplayAlert("ERROR", "Credenciales incorrectas", "Volver");
             }
         }
-
 
         private async void RegisterButton_Clicked(object sender, EventArgs e)
         {

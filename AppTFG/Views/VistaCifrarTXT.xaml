@@ -49,8 +49,9 @@
 					Grid.Column="0"
 					Margin="00,0,0,10"
 					FontSize="12"
-					Placeholder="1. Pega tu mensaje:"
+					Placeholder="1. Escribe tu mensaje:"
 					PlaceholderColor="White" />
+
 				<Picker
 					x:Name="picker"
 					Title="2. Método de cifrado"
@@ -68,6 +69,7 @@
 						<x:String>Vigenere</x:String>
 					</Picker.Items>
 				</Picker>
+
 				<Label
 					Grid.Row="4"
 					Grid.Column="0"
@@ -79,8 +81,10 @@
 					Grid.Row="5"
 					Grid.Column="0"
 					Margin="10,0,0,0"
+					FontSize="18"
 					HeightRequest="75"
-					IsEnabled="False" />
+					IsEnabled="False"
+					TextColor="AliceBlue" />
 
 				<!--  Botón de envío para CIFRAR  -->
 				<ImageButton
@@ -92,8 +96,10 @@
 					Source="candadoc.png"
 					ToolTipProperties.Text="¡Cifrar!"
 					WidthRequest="50" />
+
+				<!--  Botón guardar  -->
 				<ImageButton
-					Grid.Row="7"
+					Grid.Row="8"
 					Grid.Column="0"
 					Margin="100,10,0,10"
 					Clicked="GuardarResultado_Clicked"
@@ -172,6 +178,7 @@
 					Grid.Row="5"
 					Grid.Column="1"
 					Margin="10,0,0,0"
+					FontSize="14"
 					HeightRequest="75" />
 
 				<!--  Botón de envío para DESCIFRAR  -->
@@ -197,7 +204,9 @@
 					HorizontalOptions="Center"
 					Source="flechaback.png"
 					WidthRequest="50" />
-				<ImageButton
+
+				<!--  Botón guardar  -->
+				<!--<ImageButton
 					Grid.Row="7"
 					Grid.Column="1"
 					Margin="100,10,0,10"
@@ -206,7 +215,7 @@
 					HorizontalOptions="Center"
 					Source="gifsave.gif"
 					ToolTipProperties.Text="Guardar"
-					WidthRequest="50" />
+					WidthRequest="50" />-->
 			</Grid>
 		</ScrollView>
 	</Grid>

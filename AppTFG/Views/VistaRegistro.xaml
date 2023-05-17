@@ -16,7 +16,8 @@
 		<Frame
 			Padding="10"
 			BackgroundColor="DarkSlateBlue"
-			CornerRadius="10">
+			CornerRadius="10"
+			HorizontalOptions="Center">
 			<StackLayout>
 				<Entry
 					x:Name="UsernameEntry"
@@ -42,12 +43,11 @@
 				Grid.Column="1"
 				Padding="0"
 				BackgroundColor="Transparent"
-				BorderWidth="0"
 				Clicked="OnTermsButtonClicked"
 				FontSize="12"
 				HorizontalOptions="Start"
 				Text="Aceptar términos de uso."
-				TextColor="DarkGoldenrod" />
+				TextColor="DarkGray" />
 		</Grid>
 		<Button
 			x:Name="btnRegistrar"

@@ -1,3 +1,4 @@
+using AppTFG.Data;
 using AppTFG.Modelo;
 
 namespace AppTFG.Views
@@ -5,6 +6,7 @@ namespace AppTFG.Views
     public partial class VistaCifrarTXT : ContentPage
     {
         public int CifradoEscogido { get; set; }
+        //public int IdUsuarioActivo { get; set; }
 
         public VistaCifrarTXT()
         {
@@ -33,7 +35,7 @@ namespace AppTFG.Views
 
         private void PickerDescifrado(object sender, EventArgs e)
         {
-            if (pickerDescifrar.SelectedItem != null && pickerDescifrar.SelectedItem.ToString() == "Cesar" || picker.SelectedItem.ToString() == "Vigenere")
+            if (pickerDescifrar.SelectedItem != null && pickerDescifrar.SelectedItem.ToString() == "Cesar" || pickerDescifrar.SelectedItem.ToString() == "Vigenere")
             {
                 cifradoEscogido.IsVisible = true;
             }
@@ -41,14 +43,6 @@ namespace AppTFG.Views
             {
                 cifradoEscogido.IsVisible = false;
             }
-        }
-
-        private void Enviar_Clicked(object sender, EventArgs e)
-        {
-            var mensajeCifrado = txtResEditorCifrado.Text;
-            Clipboard.SetTextAsync(mensajeCifrado);
-
-            DisplayAlert("Éxito 😀", $"Mensaje copiado al portapapeles: {mensajeCifrado}" + mensajeCifrado, "OK");
         }
 
         private void Cifrar_Clicked(object sender, EventArgs e)
@@ -122,9 +116,29 @@ namespace AppTFG.Views
 
         private void GuardarResultado_Clicked(object sender, EventArgs e)
         {
-            // guardar mensaje en base de datos
             string mensajeCifrado = txtResEditorCifrado.Text;
             string mensajeDescifrado = txtResEditorDescifrado.Text;
+            int idUsuario = Preferences.Get("idUsuario", 1);
+            //int idUsuario = IdUsuarioActivo;
+
+            UserRepository repoUsuario = new UserRepository();
+            User usuario = repoUsuario.GetUserById(idUsuario);
+
+            if (usuario != null)
+            {
+                Mensaje mensaje = new Mensaje
+                {
+                    MensajeG = mensajeCifrado + " / " + mensajeDescifrado,
+                    Usuario = usuario
+                };
+
+                repoUsuario.AgregarMensajes(mensaje, usuario);
+                DisplayAlert("Éxito 😀", "¡Mensajes guardados!", "OK");
+            }
+            else
+            {
+                DisplayAlert("😥", "No se encontró el usuario.", "OK");
+            }
         }
     }
 }

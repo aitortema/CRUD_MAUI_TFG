@@ -43,7 +43,7 @@
 				Margin="10,15,0,0"
 				Padding="5"
 				BackgroundColor="#99A73A80"
-				Text="Cifrar texto"
+				Text="Cifrar/Descifrar TXT"
 				TextColor="White"
 				VerticalOptions="Center" />
 		</HorizontalStackLayout>
